@@ -12,7 +12,8 @@ var Worker = function(queue, router){
 			if(err)this.emit('error',err);
 			handler = router.getHandler(url);
 			if(!handler)this.emit('error','No handler found!');
-			handler(res, function(){
+			handler(url,res, function(){
+			console.log(url);
 				this.emit('doWork');
 			});
 		})
